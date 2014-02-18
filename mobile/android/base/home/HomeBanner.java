@@ -16,6 +16,7 @@ import org.mozilla.gecko.animation.ViewHelper;
 import org.mozilla.gecko.gfx.BitmapUtils;
 import org.mozilla.gecko.util.GeckoEventListener;
 import org.mozilla.gecko.util.ThreadUtils;
+import org.mozilla.gecko.widget.EllipsisTextView;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -53,7 +54,9 @@ public class HomeBanner extends LinearLayout
     // switches back to the default page.
     private boolean mUserSwipedDown = false;
 
-    private final TextView mTextView;
+    // We must use this custom TextView to address an issue on 2.3 and lower where ellipsized text
+    // will not wrap more than 2 lines.
+    private final EllipsisTextView mTextView;
     private final ImageView mIconView;
 
     // Listener that gets called when the banner is dismissed from the close button.
@@ -72,7 +75,7 @@ public class HomeBanner extends LinearLayout
 
         LayoutInflater.from(context).inflate(R.layout.home_banner, this);
 
-        mTextView = (TextView) findViewById(R.id.text);
+        mTextView = (EllipsisTextView) findViewById(R.id.text);
         mIconView = (ImageView) findViewById(R.id.icon);
     }
 
@@ -167,7 +170,8 @@ public class HomeBanner extends LinearLayout
 
                 // Store the current message id to pass back to JS in the view's OnClickListener.
                 setTag(id);
-                mTextView.setText(Html.fromHtml(text));
+                mTextView.setOriginalText("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+                // mTextView.setOriginalText(Html.fromHtml(text));
 
                 BitmapUtils.getDrawable(getContext(), iconURI, new BitmapUtils.BitmapLoader() {
                     @Override
