@@ -329,6 +329,13 @@ size. -->
      as alternate text for accessibility. It is not visible in the UI. -->
 <!ENTITY home_reading_list_hint_accessible "TIP: Save articles to your reading list by long pressing the reader mode button when it appears in the title bar.">
 
+<!-- Localization note (home_move_up_to_filter): The variable is replaced by the name of the
+     previous location in the navigation, such as the previous folder -->
+<!ENTITY home_move_up_to_filter "Up to &formatS;">
+<!-- Localization note (home_move_up_to_root): "Top" refers to the root item in the navigation
+     hierarchy -->
+<!ENTITY home_move_up_to_root "Up to Top">
+
 <!ENTITY pin_site_dialog_hint "Enter a search keyword">
 
 <!ENTITY filepicker_title "Choose File">
