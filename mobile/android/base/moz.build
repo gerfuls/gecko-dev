@@ -245,6 +245,7 @@ gbjar.sources += [
     'home/LastTabsPanel.java',
     'home/MostRecentPanel.java',
     'home/MultiTypeCursorAdapter.java',
+    'home/PanelBackItemView.java',
     'home/PanelGridView.java',
     'home/PanelItemView.java',
     'home/PanelLayout.java',
