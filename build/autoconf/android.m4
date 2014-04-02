@@ -323,6 +323,11 @@ case "$target" in
         AC_MSG_ERROR([You must download the Android support library when targeting Android.   Run the Android SDK tool and install Android Support Library under Extras.  See https://developer.android.com/tools/extras/support-library.html for more info. (looked for $ANDROID_COMPAT_LIB)])
     fi
 
+    ANDROID_COMPAT_LIB_REQUIRED_CLASS="android/support/v4/widget/SwipeRefreshLayout.class"
+    if ! unzip -l $ANDROID_COMPAT_LIB | grep -lq "$ANDROID_COMPAT_LIB_REQUIRED_CLASS" ; then
+        AC_MSG_ERROR([You must have at last version 19.1.0 of the Android support library when targeting Android.  Run the Android SDK tool and update the Android Support Library under Extras.  See https://developer.android.com/tools/extras/support-library.html for more info.])
+    fi
+
     MOZ_PATH_PROG(ZIPALIGN, zipalign, :, [$ANDROID_TOOLS])
     MOZ_PATH_PROG(DX, dx, :, [$ANDROID_BUILD_TOOLS])
     MOZ_PATH_PROG(AAPT, aapt, :, [$ANDROID_BUILD_TOOLS])
